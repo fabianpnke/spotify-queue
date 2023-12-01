@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SpotifyAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\DashboardController::class, '__invoke'])
+    ->name('dashboard')
+    ->middleware(['auth']);
+
+Route::get('/auth/redirect', [SpotifyAuthController::class, 'redirect'])
+    ->name('auth.redirect')
+    ->middleware(['guest']);
+
+Route::get('/auth/callback', [SpotifyAuthController::class, 'callback'])
+    ->name('auth.callback')
+    ->middleware(['guest']);

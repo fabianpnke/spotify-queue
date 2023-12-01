@@ -18,6 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('spotify_id')->unique();
+            $table->text('spotify_access_token');
+            $table->text('spotify_refresh_token');
             $table->timestamps();
         });
     }

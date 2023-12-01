@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'spotify_id',
+        'spotify_access_token',
+        'spotify_refresh_token',
     ];
 
     /**
@@ -31,6 +34,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'spotify_access_token',
+        'spotify_refresh_token',
     ];
 
     /**
@@ -41,5 +46,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'spotify_access_token' => 'encrypted',
+        'spotify_refresh_token' => 'encrypted',
     ];
 }
