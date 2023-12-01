@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SpotifyAuthController;
+use App\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\DashboardController::class, '__invoke'])
+Route::get('/', Dashboard::class)
     ->name('dashboard')
     ->middleware(['auth']);
 
